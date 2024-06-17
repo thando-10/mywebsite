@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Clone</title>
+<style>
+    /* Basic styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .message-container {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .message {
+        background-color: #f2f2f2;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    .message.from-me {
+        background-color: #dcf8c6;
+        align-self: flex-end;
+    }
+
+    .input-container {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .input-container input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .input-container button {
+        padding: 10px 20px;
+        margin-left: 10px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>WhatsApp Clone</h1>
+
+    <div class="message-container" id="message-container">
+        <!-- Messages will be appended here dynamically -->
+    </div>
+
+    <div class="input-container">
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    // Dummy messages data (can be replaced with real-time data or backend integration)
+    let messages = [
+        { text: 'Hello!', fromMe: false },
+        { text: 'Hi there!', fromMe: true },
+        { text: 'How are you?', fromMe: false },
+        { text: 'I\'m good, thanks!', fromMe: true }
+    ];
+
+    // Function to initialize the message display
+    function initMessages() {
+        const messageContainer = document.getElementById('message-container');
+        messageContainer.innerHTML = ''; // Clear existing messages
+
+        messages.forEach(message => {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            if (message.fromMe) {
+                messageElement.classList.add('from-me');
+            }
+            messageElement.textContent = message.text;
+            messageContainer.appendChild(messageElement);
+        });
+
+        // Scroll to bottom of message container
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+    }
+
+    // Function to send a new message
+    function sendMessage() {
+        const messageInput = document.getElementById('message-input');
+        const messageText = messageInput.value.trim();
+        
+        if (messageText !== '') {
+            messages.push({ text: messageText, fromMe: true });
+            messageInput.value = ''; // Clear input field
+            initMessages(); // Re-render messages
+        }
+    }
+
+    // Initialize messages when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        initMessages();
+    });
+</script>
+
+</body>
+</html>
+
