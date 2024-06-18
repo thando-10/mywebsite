@@ -28,13 +28,20 @@
             padding: 10px 0;
             text-align: center;
             opacity: 0; /* Initially hidden */
-            transform: translateY(-20px); /* Move up initially */
+            transform: translateX(-100%); /* Slide in from left initially */
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         header.show {
             opacity: 1; /* Show on scroll */
-            transform: translateY(0);
+            transform: translateX(0);
+        }
+
+        header.fixed {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         header h1 {
@@ -66,55 +73,20 @@
         }
 
         section {
-            margin-bottom: 30px;
+            margin-bottom: 60px; /* Added spacing between sections */
             text-align: center;
             opacity: 0; /* Initially hidden */
-            transform: translateY(20px); /* Move down initially */
+            transform: translateX(-100%); /* Slide in from left initially */
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         section.show {
             opacity: 1; /* Show on scroll */
-            transform: translateY(0);
+            transform: translateX(0);
         }
 
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .project {
-            background-color: #fff;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
-
-        .project h3 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.5em;
-            color: #333;
-        }
-
-        .project p {
-            margin-bottom: 10px;
-            color: #666;
-        }
-
-        .project a {
-            display: inline-block;
-            background-color: #333;
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 3px;
-        }
-
-        .project a:hover {
-            background-color: #555;
+        section:nth-child(even) {
+            transform: translateX(100%); /* Slide in from right for even sections */
         }
 
         footer {
@@ -127,7 +99,7 @@
 </head>
 <body>
 
-<header>
+<header class="fixed">
     <h1>My Portfolio</h1>
     <nav>
         <ul>
@@ -144,12 +116,6 @@
         <p>Hello, I am Thandolwenkosi Ndlovu. With a passion for software development, I have cultivated extensive experience using Python, HTML, Flask, and GitHub to create robust applications and solutions. I have immersed myself in diverse projects that have enriched my technical skills and problem-solving abilities.</p>
         
         <p>My proficiency in Python extends to developing scalable backend solutions, leveraging frameworks like Flask to build APIs and web applications that are both efficient and maintainable. I am adept at translating client requirements into functional designs and ensuring seamless integration across different platforms.</p>
-        
-        <p>HTML has been instrumental in my journey as a frontend developer, enabling me to craft engaging user interfaces that prioritize usability and aesthetics. I enjoy combining my technical skills with creative design principles to deliver intuitive web experiences.</p>
-        
-        <p>GitHub has served as my collaborative platform of choice, where I actively contribute to open-source projects and manage version control for team-based initiatives. My experience with Git workflows ensures code integrity and facilitates efficient collaboration among peers.</p>
-        
-        <p>I am fully equipped to tackle challenges in the real world, equipped with a strong foundation in software development principles and a commitment to continuous learning. I thrive in dynamic environments where innovation and teamwork are valued, and I am eager to contribute my skills to impactful projects that drive positive change. Here you can find some of my projects and achievements.</p>
     </section>
 
     <section id="portfolio">
@@ -190,10 +156,12 @@
 
     // Function to handle scroll events
     function handleScroll() {
-        const headers = document.querySelectorAll('header, section');
-        headers.forEach(header => {
-            if (isInViewport(header)) {
-                header.classList.add('show');
+        const headersAndSections = document.querySelectorAll('header, section');
+        headersAndSections.forEach(headerOrSection => {
+            if (isInViewport(headerOrSection)) {
+                headerOrSection.classList.add('show');
+            } else {
+                headerOrSection.classList.remove('show');
             }
         });
     }
