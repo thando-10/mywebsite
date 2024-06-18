@@ -19,38 +19,25 @@
             background-color: #f2f2f2;
             color: #333;
             overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 1; /* Ensure containers appear above the background */
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px; /* Added margin for spacing */
         }
 
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 0;
-            position: relative;
-            z-index: 2; /* Ensure header is above the background */
+            text-align: center;
         }
 
         header h1 {
             margin: 0;
             padding: 0;
             font-size: 2.5em;
-            text-align: center;
         }
 
         nav ul {
             list-style-type: none;
             padding: 0;
-            text-align: center;
         }
 
         nav ul li {
@@ -69,8 +56,6 @@
         }
 
         main {
-            position: relative;
-            z-index: 1; /* Ensure main content is above the background */
             padding: 20px 0;
         }
 
@@ -112,7 +97,6 @@
             text-decoration: none;
             padding: 8px 15px;
             border-radius: 3px;
-            transition: background-color 0.3s ease;
         }
 
         .project a:hover {
@@ -124,59 +108,24 @@
             color: #fff;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 2; /* Ensure footer is above the background */
-        }
-
-        /* Animated 3D background */
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #a18cd1, #fbc2eb, #8c7ae6, #fbc2eb, #a18cd1);
-            z-index: -1;
-            pointer-events: none;
-            animation: animateBackground 60s linear infinite;
-            transform: rotateX(60deg) rotateY(45deg);
-            background-size: 400% 400%;
-        }
-
-        @keyframes animateBackground {
-            0% {
-                background-position: 0% 0%;
-            }
-            50% {
-                background-position: 100% 100%;
-            }
-            100% {
-                background-position: 0% 0%;
-            }
         }
     </style>
 </head>
 <body>
 
-<div class="animated-bg"></div>
-
 <header>
-    <div class="container">
-        <h1>My Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
+    <h1>My Portfolio</h1>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
 <main>
-    <section id="about" class="container">
+    <section id="about">
         <h2>About Me</h2>
         <p>Hello, I am Thandolwenkosi Ndlovu. With a passion for software development, I have cultivated extensive experience using Python, HTML, Flask, and GitHub to create robust applications and solutions. I have immersed myself in diverse projects that have enriched my technical skills and problem-solving abilities.</p>
         
@@ -189,12 +138,12 @@
         <p>I am fully equipped to tackle challenges in the real world, equipped with a strong foundation in software development principles and a commitment to continuous learning. I thrive in dynamic environments where innovation and teamwork are valued, and I am eager to contribute my skills to impactful projects that drive positive change. Here you can find some of my projects and achievements.</p>
     </section>
 
-    <section id="portfolio" class="container">
+    <section id="portfolio">
         <h2>Portfolio</h2>
         <div class="project">
             <h3>Project 1</h3>
             <p>Whatsapp Clone</p>
-            <a href="whatsapp">View Project</a>
+            <a href="https://github.com/thando-10/mywebsite/blob/branch/path/to/whatsapp">View Project</a>
         </div>
         <div class="project">
             <h3>Project 2</h3>
@@ -203,18 +152,14 @@
         </div>
     </section>
 
-    <section id="contact" class="container">
+    <section id="contact">
         <h2>Contact Me</h2>
         <p>You can reach me via email at <a href="mailto:thandoxsndlovu@gmail.com">thandoxsndlovu@gmail.com</a>.</p>
-
-	<p>Contact Number: 098 765 5656 </p>
     </section>
 </main>
 
 <footer>
-    <div class="container">
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
-    </div>
+    <p>&copy; 2024 My Portfolio. All rights reserved.</p>
 </footer>
 
 </body>
